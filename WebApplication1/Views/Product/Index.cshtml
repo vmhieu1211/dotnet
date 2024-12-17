@@ -1,0 +1,40 @@
+﻿@model List<WebApplication1.Models.Product>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h3>Index</h3>
+<table class="table tabel-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>CreatedBy</th>
+        <th>CreateAt</th>
+        <th width="280px">Action</th>
+    </tr>
+    <tbody>
+        @foreach( var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Images</td>
+                <td>@product.CreatedBy</td>
+                <td>@product.CreatedAt</td>
+                <td>
+                    <form asp-action="Delete" asp-route-id="@product.Id" method="post">
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@product.Id">Edit</a>
+                        <form asp-action="Delete" method="post">
+                    <button type="submit" class="btn btn-danger" asp-action="delete" asp-route-id="@product.Id">Delete</button>
+                    </form>
+                    </form>
+                </td>
+            </tr>
+       
+        }
+    </tbody>
+</table>

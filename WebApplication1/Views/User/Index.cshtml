@@ -1,0 +1,33 @@
+﻿@model List<WebApplication1.Models.User>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Index</h3>
+<table class="table tabel-bordered">
+    <tr>
+         <th>FullName</th> 
+        <th>Email</th>
+        <th>Password</th>
+        <th width="280px">Action</th>
+    </tr>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.FullName</td>
+                <td>@user.Email</td>
+                <td>@user.Password</td>
+                <td>
+                    <form asp-action="Delete" asp-route-id="@user.Id" method="post">
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@user.Id">Edit</a>
+                        <form asp-action="Delete" method="post">
+                            <button type="submit" class="btn btn-danger" asp-action="delete" asp-route-id="@user.Id">Delete</button>
+                        </form>
+                    </form>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>

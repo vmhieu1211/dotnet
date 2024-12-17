@@ -1,0 +1,11 @@
+﻿@{
+    var userId = Context.Session.GetString("Id");
+}
+@if (!string.IsNullOrEmpty(userId))
+{
+    <p>User is logged in with ID: @userId</p>
+}
+else
+{
+    <p>User is not logged in.</p>
+}
