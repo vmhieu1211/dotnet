@@ -5,7 +5,7 @@
 
 <h3>Edit Product</h3>
 
-<form asp-action="Edit" method="post">
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="Name">Name</label>
         <input type="text" class="form-control " asp-for="Name" />
@@ -15,8 +15,8 @@
         <input type="text" class="form-control " asp-for="Description" />
     </div>
     <div class="form-group">
-        <label for="Images">Images</label>
-        <input type="text" class="form-control " asp-for="Images" />
+        <label for="Images">Upload New Image</label>
+        <input type="file" class="form-control" name="imageFile" />
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>

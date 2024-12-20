@@ -16,25 +16,34 @@
         <th width="280px">Action</th>
     </tr>
     <tbody>
-        @foreach( var product in Model)
+        @foreach (var product in Model)
         {
             <tr>
                 <td>@product.Id</td>
                 <td>@product.Name</td>
                 <td>@product.Description</td>
-                <td>@product.Images</td>
-                <td>@product.CreatedBy</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(product.Images))
+                    {
+                        <img src="@product.Images" alt="@product.Name" width="100" />
+                    }
+                    else
+                    {
+                    <span>No Images</span>
+                    }
+                </td>
+                <td>@product.User.FullName</td>
                 <td>@product.CreatedAt</td>
                 <td>
                     <form asp-action="Delete" asp-route-id="@product.Id" method="post">
                         <a class="btn btn-primary" asp-action="Edit" asp-route-id="@product.Id">Edit</a>
                         <form asp-action="Delete" method="post">
-                    <button type="submit" class="btn btn-danger" asp-action="delete" asp-route-id="@product.Id">Delete</button>
-                    </form>
+                            <button type="submit" class="btn btn-danger" asp-action="delete" asp-route-id="@product.Id">Delete</button>
+                        </form>
                     </form>
                 </td>
             </tr>
-       
+
         }
     </tbody>
 </table>

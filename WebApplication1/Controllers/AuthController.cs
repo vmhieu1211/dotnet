@@ -31,15 +31,13 @@ public class AuthController : Controller
         if (ModelState.IsValid)
         {
             var user = _context.Users.FirstOrDefault(u => u.Email == model.Email);
-
-
             if (user != null)
             {
                 var result = _passwordHasher.VerifyHashedPassword(user, user.Password, model.Password);
                 if (result == PasswordVerificationResult.Success)
                 {
                     HttpContext.Session.SetString("Email", user.Email);
-                    HttpContext.Session.SetString("Id", user.Id.ToString());
+                    HttpContext.Session.SetString("UserId", user.Id.ToString());
 
                     return RedirectToAction("Index", "Home");
                 }

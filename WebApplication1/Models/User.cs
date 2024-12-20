@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Hosting;
 
 namespace WebApplication1.Models
 {
@@ -8,7 +9,7 @@ namespace WebApplication1.Models
         public string FullName { get; set; } = null!;
         public required string  Email { get; set; }
         public required string Password { get; set; }
-        public List<Product>? Products { get; set; }
+        public ICollection<Product> Products { get; } = new List<Product>();
 
     }
 }

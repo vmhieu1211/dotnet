@@ -6,7 +6,8 @@
 <h3>Index</h3>
 <table class="table tabel-bordered">
     <tr>
-         <th>FullName</th> 
+        <th>Id</th>
+        <th>FullName</th>
         <th>Email</th>
         <th>Password</th>
         <th width="280px">Action</th>
@@ -15,6 +16,7 @@
         @foreach (var user in Model)
         {
             <tr>
+                <td>@user.Id</td>
                 <td>@user.FullName</td>
                 <td>@user.Email</td>
                 <td>@user.Password</td>
